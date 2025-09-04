@@ -35,7 +35,7 @@ export default function EditStudentForm({ student }: EditStudentFormProps) {
 
     if (result.success) {
       setTimeout(() => {
-        router.push('/'); // หรือเปลี่ยนเป็นหน้า list นักเรียน
+        router.push('/');
       }, 1500);
     }
   }
@@ -86,31 +86,30 @@ export default function EditStudentForm({ student }: EditStudentFormProps) {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-200 flex items-center justify-center p-6">
-      <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl w-full max-w-2xl">
+    <div className="bg-gray-100 dark:bg-gray-900 transition-colors duration-300 flex items-center justify-center p-6 min-h-[calc(100vh-100px)]">
+      <div className="bg-white dark:bg-gray-800 transition-colors duration-300 p-8 md:p-10 rounded-2xl shadow-xl w-full max-w-2xl">
         {/* Header and Close Button */}
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl md:text-2xl font-extrabold text-blue-700 tracking-tight">
-            กรุณาแก้ไขข้อมูลนักเรียนตามต้องการ
+          <h1 className="text-3xl md:text-2xl font-extrabold text-indigo-600 dark:text-indigo-400 tracking-tight">
+            กรุณาแก้ไขข้อมูลนักเรียนตามต้องการ 🛠️
           </h1>
           <Link
             href="/"
-            className="text-gray-400 hover:text-gray-600 transition-colors text-3xl font-bold"
+            className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 transition-colors text-3xl font-bold"
             aria-label="Close form"
           >
             &times;
           </Link>
         </div>
-       
-
+        
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {formFields.map(({ label, name, placeholder, type, defaultValue }) => (
-              <div key={name} className="relative">
+              <div key={name}>
                 <label
                   htmlFor={name}
-                  className="block text-gray-700 font-semibold mb-2"
+                  className="block text-gray-700 dark:text-gray-300 font-semibold mb-2"
                 >
                   {label}:
                 </label>
@@ -121,7 +120,7 @@ export default function EditStudentForm({ student }: EditStudentFormProps) {
                   required
                   placeholder={placeholder}
                   defaultValue={defaultValue}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-gray-400 transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 dark:focus:ring-indigo-600 focus:border-transparent dark:bg-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 transition duration-300 ease-in-out"
                 />
               </div>
             ))}
@@ -131,7 +130,7 @@ export default function EditStudentForm({ student }: EditStudentFormProps) {
           <div className="flex flex-col items-center justify-between pt-4">
             <button
               type="submit"
-              className="w-full md:w-auto px-8 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="w-full md:w-auto px-8 py-3 bg-indigo-600 text-white font-bold rounded-full shadow-lg hover:bg-indigo-700 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               บันทึกการแก้ไข
             </button>
@@ -139,8 +138,8 @@ export default function EditStudentForm({ student }: EditStudentFormProps) {
               <div
                 className={`mt-6 px-4 py-2 rounded-lg text-center font-medium w-full ${
                   success
-                    ? 'bg-green-100 text-green-700 border border-green-300'
-                    : 'bg-red-100 text-red-700 border border-red-300'
+                    ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-600'
+                    : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-600'
                 }`}
               >
                 {message}
